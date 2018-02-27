@@ -13,12 +13,186 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 @Entity
 @Table(name = "customers")
-@Data
 public class Customers {
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getSuffix() {
+		return suffix;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public String getPrintOnCheckAs() {
+		return printOnCheckAs;
+	}
+
+	public void setPrintOnCheckAs(String printOnCheckAs) {
+		this.printOnCheckAs = printOnCheckAs;
+	}
+
+	public String getBillingStreet() {
+		return billingStreet;
+	}
+
+	public void setBillingStreet(String billingStreet) {
+		this.billingStreet = billingStreet;
+	}
+
+	public String getBillingCity() {
+		return billingCity;
+	}
+
+	public void setBillingCity(String billingCity) {
+		this.billingCity = billingCity;
+	}
+
+	public String getBillingState() {
+		return billingState;
+	}
+
+	public void setBillingState(String billingState) {
+		this.billingState = billingState;
+	}
+
+	public String getBillingZip() {
+		return billingZip;
+	}
+	
+
+	public void setBillingZip(String billingZip) {
+		this.billingZip = billingZip;
+	}
+
+	public String getBillingCountry() {
+		return billingCountry;
+	}
+
+	public void setBillingCountry(String billingCountry) {
+		this.billingCountry = billingCountry;
+	}
+
+	public String getShippingStreet() {
+		return shippingStreet;
+	}
+
+	public void setShippingStreet(String shippingStreet) {
+		this.shippingStreet = shippingStreet;
+	}
+
+	public String getShippingCity() {
+		return shippingCity;
+	}
+
+	public void setShippingCity(String shippingCity) {
+		this.shippingCity = shippingCity;
+	}
+
+	public String getShippingState() {
+		return shippingState;
+	}
+
+	public void setShippingState(String shippingState) {
+		this.shippingState = shippingState;
+	}
+
+	public String getShippingZip() {
+		return shippingZip;
+	}
+
+	public void setShippingZip(String shippingZip) {
+		this.shippingZip = shippingZip;
+	}
+
+	public String getShippingCountry() {
+		return shippingCountry;
+	}
+
+	public void setShippingCountry(String shippingCountry) {
+		this.shippingCountry = shippingCountry;
+	}
+
+	public String getOtherDetails() {
+		return otherDetails;
+	}
+
+	public void setOtherDetails(String otherDetails) {
+		this.otherDetails = otherDetails;
+	}
+
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "customer_id")
@@ -58,7 +232,7 @@ public class Customers {
 	private String billingState;
 
 	@Column(name = "billing_zip")
-	private Integer billingZip;
+	private String billingZip;
 
 	@Column(name = "billing_country")
 	private String billingCountry;
@@ -73,7 +247,7 @@ public class Customers {
 	private String shippingState;
 
 	@Column(name = "shipping_zip")
-	private Integer shippingZip;
+	private String shippingZip;
 
 	@Column(name = "shipping_country")
 	private String shippingCountry;
@@ -86,8 +260,8 @@ public class Customers {
 
 	public Customers(Integer customerId, String title, String firstName, String middleName, String lastName,
 			String suffix, String email, String company, String displayName, String printOnCheckAs,
-			String billingStreet, String billingCity, String billingState, Integer billingZip, String billingCountry,
-			String shippingStreet, String shippingCity, String shippingState, Integer shippingZip,
+			String billingStreet, String billingCity, String billingState, String billingZip, String billingCountry,
+			String shippingStreet, String shippingCity, String shippingState, String shippingZip,
 			String shippingCountry, String otherDetails, Set<Orders> orders) {
 		super();
 		this.customerId = customerId;
@@ -178,8 +352,8 @@ public class Customers {
 
 	public Customers(String title, String firstName, String middleName, String lastName, String suffix, String email,
 			String company, String displayName, String printOnCheckAs, String billingStreet, String billingCity,
-			String billingState, Integer billingZip, String billingCountry, String shippingStreet, String shippingCity,
-			String shippingState, Integer shippingZip, String shippingCountry, String otherDetails) {
+			String billingState, String billingZip, String billingCountry, String shippingStreet, String shippingCity,
+			String shippingState, String shippingZip, String shippingCountry, String otherDetails) {
 		super();
 		this.title = title;
 		this.firstName = firstName;

@@ -2,6 +2,8 @@ package com.hibernate.app;
 
 import java.util.Scanner;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import com.hibernate.entity.Customers;
 import com.hibernate.exception.CustomException;
 import com.hibernate.interf.CustomerService;
@@ -10,16 +12,19 @@ import com.hibernate.service.CustomerServiceImpl;
 public class CustomerApplication {
 
 	public static void main(String[] args) throws CustomException {
+		String log4jConfPath = "/path/to/log4j.properties";
+		PropertyConfigurator.configure(log4jConfPath);
 
-		try (Scanner sc = new Scanner(System.in);) {
+		try {
 			while (true) {
-				System.out.println("Select one option from the menu \n");
+				System.out.println("Select from the menu \n");
 				System.out.println("1. Add a Customer");
 				System.out.println("2. Delete a Customer");
 				System.out.println("3. Update Customer");
 				System.out.println("4. Display Customer");
 				System.out.println("5. Exit");
 				System.out.println("Please provide your choice \n");
+				Scanner sc = new Scanner(System.in);
 				int option = sc.nextInt();
 				CustomerApplication capp = new CustomerApplication();
 				switch (option) {
@@ -85,10 +90,10 @@ public class CustomerApplication {
 
 	private void displayCustomer(Scanner sc) {
 		System.out.println("Enter Customer ID : ");
-		int customerrId = sc.nextInt();
+		int customerId = sc.nextInt();
 		try {
 			CustomerService simp = new CustomerServiceImpl();
-			Customers customer = simp.loadCustomer(customerrId);
+			Customers customer = (Customers) simp.loadCustomer(customerId);
 			System.out.println(customer);
 		} catch (CustomException e) {
 			e.printStackTrace();
@@ -121,7 +126,7 @@ public class CustomerApplication {
 		System.out.println("Enter Customer Billing State : ");
 		String billingState = sc.next();
 		System.out.println("Enter Customer Billing  Zip : ");
-		Integer billingZip = sc.nextInt();
+		String billingZip = sc.next();
 		System.out.println("Enter Customer Billing  Country : ");
 		String billingCountry = sc.next();
 		System.out.println("Enter Customer Shipping Street : ");
@@ -131,7 +136,7 @@ public class CustomerApplication {
 		System.out.println("Enter Customer shipping State : ");
 		String shippingState = sc.next();
 		System.out.println("Enter Customer shipping  Zip : ");
-		Integer shippingZip = sc.nextInt();
+		String shippingZip = sc.next();
 		System.out.println("Enter Customer shipping  Country : ");
 		String shippingCountry = sc.next();
 		System.out.println("Enter Other Details : ");
